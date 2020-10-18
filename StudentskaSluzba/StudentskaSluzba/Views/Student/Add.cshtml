@@ -1,0 +1,89 @@
+﻿@model StudentskaSluzba.Models.Student
+
+@{
+    ViewData["Title"] = "Add";
+    List<Grad> gradovi = (List<Grad>)ViewData["gradkey"];
+    List<GodinaStudija> godineStudija = (List<GodinaStudija>)ViewData["godinekey"];
+}
+
+<div>
+    <div class="container">
+        <h4 class="bg-success text-white p-3">Dodaj studenta</h4>
+        <form class="p-2" method="post" asp-action="Add">
+            <div class="form-group">
+                <label>Ime</label>
+                <input asp-for="Ime" type="text" class="form-control" id="" placeholder="Ime">
+            </div>
+
+            <div class="form-group">
+                <label for="">Prezime</label>
+                <input asp-for="Prezime" type="text" class="form-control" id="" placeholder="Prezime">
+            </div>
+
+            <div class="form-group">
+                <label>Datum rođenja</label>
+                @Html.EditorFor(model => model.DatumRodjenja, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+
+            <div class="form-group">
+                <label for="">Adresa</label>
+                <input asp-for="AdresaStanovanja" type="text" class="form-control" id="" placeholder="Adresa">
+            </div>
+
+            <div class="form-group">
+                <label for="">JMBG</label>
+                <input asp-for="JMBG" type="text" class="form-control" id="" placeholder="JMBG">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email</label>
+                <input asp-for="Email" type="email" class="form-control" id="exampleInputEmail1" placeholder="Unesite email">
+            </div>
+
+            <div class="form-group">
+                <label for="">Grad</label>
+                <select name="GradId" class="form-control">
+                    @{
+                        <option disabled hidden selected>Odaberite grad</option>
+                        foreach (var grad in gradovi)
+                        {
+                            <option value="@grad.Id">@grad.Naziv</option>
+                        }
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="">Godina studija</label>
+                <select name="GodinaStudijaId" class="form-control">
+                    <option disabled hidden selected>Odaberite godinu</option>
+                    @foreach (var godina in godineStudija)
+                    {
+                        <option value="@godina.Id">@godina.Godina</option>
+                    }
+                </select>
+            </div>
+
+            <input type="submit" class="btn btn-success" value="Dodaj studenta" />
+            <a asp-action="Index" class="btn btn-success">Nazad</a>
+        </form>
+    </div>
+</div>
+
+@section scripts {
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('input[type=datetime]').datepicker({
+                dateFormat: "dd/M/yy",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-60:+0"
+            });
+
+        });
+    </script>
+}
