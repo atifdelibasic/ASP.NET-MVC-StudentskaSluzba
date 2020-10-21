@@ -1,2 +1,2 @@
 # ASP.NET-MVC-StudentskaSluzba
-ASP.NET MVC Application 
+ASP.NET Core MVC Application 
