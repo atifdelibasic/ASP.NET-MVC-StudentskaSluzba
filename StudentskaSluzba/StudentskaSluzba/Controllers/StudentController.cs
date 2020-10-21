@@ -125,11 +125,15 @@ namespace StudentskaSluzba.Controllers
 
         public IActionResult Uspjeh(int? id)
         {
-            var student = _db.Student.Find(id);
 
-            student.Uspjeh = (from c in _db.Uspjeh
-                              where c.StudentId == id
-                              select c).Include(s => s.Predmet).ToList();
+            //var student = _db.Student
+            //        .Include(s => s.Uspjeh.Select(p => p.Predmet))
+            //        .SingleOrDefault(s => s.Id == id);
+
+            var student = _db.Student
+                        .Include(s => s.Uspjeh)
+                        .ThenInclude(s => s.Predmet)
+                        .SingleOrDefault(s => s.Id == id);
 
             return View(student);
         }
@@ -171,10 +175,9 @@ namespace StudentskaSluzba.Controllers
             if (id != null || id != 0)
             {
                 var obj = _db.Uspjeh.Find(id);
-                int? Id = obj.StudentId;
                 _db.Remove(obj);
                 _db.SaveChanges();
-                return RedirectToAction("Uspjeh", new { Id });
+                return RedirectToAction("Uspjeh", new { id = obj.StudentId });
             }
 
             return RedirectToAction("Index");

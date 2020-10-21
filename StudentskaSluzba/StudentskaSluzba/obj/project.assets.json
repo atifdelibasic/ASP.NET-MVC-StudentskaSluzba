@@ -8490,11 +8490,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Atif\\source\\repos\\StudentskaSluzba\\StudentskaSluzba\\StudentskaSluzba.csproj",
+      "projectUniqueName": "C:\\Users\\Atif\\Desktop\\GIT\\ASP.NET-MVC-StudentskaSluzba\\StudentskaSluzba\\StudentskaSluzba\\StudentskaSluzba.csproj",
       "projectName": "StudentskaSluzba",
-      "projectPath": "C:\\Users\\Atif\\source\\repos\\StudentskaSluzba\\StudentskaSluzba\\StudentskaSluzba.csproj",
+      "projectPath": "C:\\Users\\Atif\\Desktop\\GIT\\ASP.NET-MVC-StudentskaSluzba\\StudentskaSluzba\\StudentskaSluzba\\StudentskaSluzba.csproj",
       "packagesPath": "C:\\Users\\Atif\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Atif\\source\\repos\\StudentskaSluzba\\StudentskaSluzba\\obj\\",
+      "outputPath": "C:\\Users\\Atif\\Desktop\\GIT\\ASP.NET-MVC-StudentskaSluzba\\StudentskaSluzba\\StudentskaSluzba\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

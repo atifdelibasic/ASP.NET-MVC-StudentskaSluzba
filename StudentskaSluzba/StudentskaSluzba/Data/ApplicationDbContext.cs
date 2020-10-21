@@ -14,6 +14,15 @@ namespace StudentskaSluzba.Data
 
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //base.OnModelCreating(modelBuilder);
+            //modelBuilder.Entity<Student>()
+            //    .HasOne(s => s.GodinaStudija)
+            //    .WithMany(g => g.Studenti);
+
+        }
+
         public DbSet<Grad> Grad { get; set; }
         public DbSet<Kanton> Kanton { get; set; }
         public DbSet<Drzava> Drzava { get; set; }

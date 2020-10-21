@@ -11,5 +11,7 @@ namespace StudentskaSluzba.Models
         [Key]
         public int Id { get; set; }
         public int Godina { get; set; }
+
+        public ICollection<Student> Studenti { get; set; }
     }
 }

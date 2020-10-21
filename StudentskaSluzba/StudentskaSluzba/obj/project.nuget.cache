@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Xh7ZrkQOmGY22eSKVcYCZQGJuUo09SVFwLKvSl/yt4WOvqLnJSg07V4RAv4nzRU4CWMCnyukr5RHZDSH5dMt8A==",
+  "dgSpecHash": "wxIzfHPOoAiCaKKTxz3v99T1zg4HsSmv2mc6jZ5VIwOgGhqhQ+YHW8znTqoTqXH+c8R9qWS0k7GtO+FUyjGCRg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Atif\\source\\repos\\StudentskaSluzba\\StudentskaSluzba\\StudentskaSluzba.csproj",
+  "projectFilePath": "C:\\Users\\Atif\\Desktop\\GIT\\ASP.NET-MVC-StudentskaSluzba\\StudentskaSluzba\\StudentskaSluzba\\StudentskaSluzba.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Atif\\.nuget\\packages\\jquery\\3.5.1\\jquery.3.5.1.nupkg.sha512",
     "C:\\Users\\Atif\\.nuget\\packages\\jquery.ui.combined\\1.12.1\\jquery.ui.combined.1.12.1.nupkg.sha512",
