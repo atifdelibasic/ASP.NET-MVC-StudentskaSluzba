@@ -9,11 +9,12 @@
 <div>
     <div class="container">
         <h4 class="bg-success text-white p-3">Dodaj studenta</h4>
-
+        <div asp-validation-summary="ModelOnly"></div>
         <form class="p-2" method="post" asp-action="Edit">
             <div class="form-group">
                 <label>Ime</label>
                 <input asp-for="Ime" type="text" class="form-control" placeholder="Ime">
+                <span asp-validation-for="Ime" class="text-danger"></span>
             </div>
 
             <div class="form-group">
@@ -42,31 +43,19 @@
             </div>
 
             <div class="form-group">
-                <label for="">Grad</label>
-                <select name="GradId" class="form-control">
-                    @{
-                        <option selected hidden value="@Model.GradId">
-                            @Model.Grad.Naziv
-                        </option>
-                        foreach (var grad in gradovi)
-                        {
-                            <option value="@grad.Id">@grad.Naziv</option>
-                        }
-                    }
+                <label asp-for="Grad"></label>
+                <select asp-for="GradId" asp-items="@(new SelectList(gradovi,"Id","Naziv"))" class="form-control">
+                    <option selected hidden value="@Model.GradId">@Model.Grad.Naziv</option>
                 </select>
+                <span asp-validation-for="GradId" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label for="">Godina studija</label>
-                <select name="GodinaStudijaId" class="form-control">
-                    <option selected hidden value="@Model.GodinaStudijaId">
-                        @Model.GodinaStudija.Godina
-                    </option>
-                    @foreach (var godina in godineStudija)
-                    {
-                        <option value="@godina.Id">@godina.Godina</option>
-                    }
+                <label>Godina studija</label>
+                <select asp-for="GodinaStudijaId" asp-items="@(new SelectList(godineStudija,"Id","Godina"))" class="form-control">
+                    <option selected hidden value="@Model.GodinaStudijaId">@Model.GodinaStudija.Godina</option>
                 </select>
+                <span asp-validation-for="GodinaStudijaId" class="text-danger"></span>
             </div>
 
             <input type="submit" class="btn btn-success" value="Spasi promjene" />
@@ -77,8 +66,8 @@
 
 @section scripts {
     <script>
-        //$(document).ready(function () {
-        //    $("#").datepicker();
-        //});
+                    //$(document).ready(function () {
+                    //    $("#").datepicker();
+                    //});
     </script>
 }

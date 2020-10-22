@@ -7,9 +7,10 @@
 
 <div class="container">
     <form method="post" asp-action="EditUspjeh">
+        <div asp-validation-summary="ModelOnly"></div>
         <input asp-for="StudentId" value="@Model.StudentId" hidden />
         <div class="form-group">
-            <label>Predmet</label>
+            <label asp-for="Predmet"></label>
             <select name="PredmetId" class="form-control">
                 <option value="@Model.PredmetId" selected hidden>@Model.Predmet.Naziv</option>
                 @{

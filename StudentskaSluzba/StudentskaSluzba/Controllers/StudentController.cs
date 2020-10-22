@@ -57,7 +57,7 @@ namespace StudentskaSluzba.Controllers
             {
                 _db.Student.Add(student);
                 _db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("UspjesanAdd", new { id = student.Id });
             }
             IEnumerable<Grad> gradovi = _db.Grad.ToList();
             IEnumerable<GodinaStudija> godine = _db.GodinaStudja.ToList();
@@ -67,7 +67,13 @@ namespace StudentskaSluzba.Controllers
 
             return View(student);
         }
+        public IActionResult UspjesanAdd(int? id)
+        {
+            var student = _db.Student.Find(id);
 
+            ViewData["student"] = student;
+            return View();
+        }
         // DELETE Student
         public IActionResult Delete(int? id)
         {
@@ -137,10 +143,6 @@ namespace StudentskaSluzba.Controllers
 
             return View(student);
         }
-
-        // -------------------------
-        // Uspjeh
-        // -------------------------
 
         public IActionResult AddUspjeh(int? id)
         {

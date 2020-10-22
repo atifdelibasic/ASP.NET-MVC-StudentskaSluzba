@@ -11,21 +11,24 @@ namespace StudentskaSluzba.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Ime je obavezno")]
         public string Ime { get; set; }
         [Required]
         public string Prezime { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Unesite datum rođenja")]
         public DateTime? DatumRodjenja { get; set; }
+        [Required]
         public string AdresaStanovanja { get; set; }
+        [Required]
         public string JMBG { get; set; }
+        [Required]
         public string Email { get; set; }
-
+        [Required(ErrorMessage ="Obavezno polje")]
         [ForeignKey("GodinaStudija")]
         public int GodinaStudijaId { get; set; }
         [Display(Name ="Godina studija")]
         public virtual GodinaStudija GodinaStudija { get; set; }
-
+        [Required(ErrorMessage ="Obavezno polje")]
         public int GradId { get; set; }
         [ForeignKey("GradId")]
         public virtual Grad Grad { get; set; }
