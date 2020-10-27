@@ -15,6 +15,10 @@
     <Compile Remove="Migrations\20201021204453_new123.Designer.cs" />
     <Compile Remove="Migrations\20201021204649_new123.cs" />
     <Compile Remove="Migrations\20201021204649_new123.Designer.cs" />
+    <Compile Remove="Migrations\20201027125924_korisnickiNalog.cs" />
+    <Compile Remove="Migrations\20201027125924_korisnickiNalog.Designer.cs" />
+    <Compile Remove="Migrations\20201027130300_korisnickiNalogEdit.cs" />
+    <Compile Remove="Migrations\20201027130300_korisnickiNalogEdit.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

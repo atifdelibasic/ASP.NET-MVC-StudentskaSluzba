@@ -315,3 +315,4 @@ C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\Students
 C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\obj\Debug\netcoreapp3.1\StudentskaSluzba.csproj.CoreCompileInputs.cache
 C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\obj\Debug\netcoreapp3.1\StudentskaSluzba.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\obj\Debug\netcoreapp3.1\Razor\Views\Student\UspjesanAdd.cshtml.g.cs
+C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\obj\Debug\netcoreapp3.1\Razor\Views\Autentifikacija\Login.cshtml.g.cs

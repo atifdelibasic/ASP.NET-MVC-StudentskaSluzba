@@ -3,10 +3,11 @@
     ViewData["Title"] = "Index";
     List<Predmet> predmeti = (List<Predmet>)ViewData["predmeti"];
     var pretraga = ViewData["pretraga"];
+    var error = TempData["error_poruka"];
 }
 
 <div class="container">
-
+    <h1>@error</h1>
     <form>
         <div class="form-group">
             <label>Pretraži predmete</label>

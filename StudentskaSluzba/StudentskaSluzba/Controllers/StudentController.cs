@@ -7,10 +7,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using StudentskaSluzba.Data;
+using StudentskaSluzba.Helper;
 using StudentskaSluzba.Models;
 
 namespace StudentskaSluzba.Controllers
 {
+    [Autorizacija(referent: true, student: false)]
     public class StudentController : Controller
     {
         private readonly ApplicationDbContext _db;
@@ -22,6 +24,14 @@ namespace StudentskaSluzba.Controllers
 
         public IActionResult Index(string pretraga)
         {
+            KorisnickiNalog korisnik = HttpContext.GetLogiraniKorisnik();
+
+            if(korisnik == null)
+            {
+                TempData["error_poruka"] = "Nemate pravo pristupa"; 
+                return RedirectToAction("Login", "Autentifikacija");
+            }
+
             List<Student> list = new List<Student>();
             if (!string.IsNullOrEmpty(pretraga))
             {

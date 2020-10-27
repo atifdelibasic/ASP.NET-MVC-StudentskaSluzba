@@ -1,4 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@using StudentskaSluzba.Helper
+@using Microsoft.AspNetCore.Http
+@using StudentskaSluzba.Models
+
+@{
+    KorisnickiNalog nalog = Context.GetLogiraniKorisnik();
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -26,6 +34,15 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Predmet" asp-action="Index">Predmeti</a>
                         </li>
+                        @{
+                            if (nalog != null)
+                            {
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Autentifikacija" asp-action="Logout">@nalog?.Email Logout</a>
+                                </li>
+                            }
+                        }
                     </ul>
                 </div>
             </div>
