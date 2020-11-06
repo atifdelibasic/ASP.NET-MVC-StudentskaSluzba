@@ -280,15 +280,16 @@ C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\Students
 C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\obj\Debug\netcoreapp3.1\StudentskaSluzba.csprojAssemblyReference.cache
 C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\obj\Debug\netcoreapp3.1\StudentskaSluzba.AssemblyInfoInputs.cache
 C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\obj\Debug\netcoreapp3.1\StudentskaSluzba.AssemblyInfo.cs
+C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\obj\Debug\netcoreapp3.1\StudentskaSluzba.csproj.CoreCompileInputs.cache
+C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\obj\Debug\netcoreapp3.1\StudentskaSluzba.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\obj\Debug\netcoreapp3.1\StudentskaSluzba.RazorAssemblyInfo.cache
 C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\obj\Debug\netcoreapp3.1\StudentskaSluzba.RazorAssemblyInfo.cs
 C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\obj\Debug\netcoreapp3.1\StudentskaSluzba.TagHelpers.input.cache
 C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\obj\Debug\netcoreapp3.1\StudentskaSluzba.TagHelpers.output.cache
 C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\obj\Debug\netcoreapp3.1\StudentskaSluzba.RazorCoreGenerate.cache
-C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\obj\Debug\netcoreapp3.1\Razor\Views\Predmet\AddPredmet.cshtml.g.cs
+C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\obj\Debug\netcoreapp3.1\Razor\Views\Autentifikacija\Login.cshtml.g.cs
 C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\obj\Debug\netcoreapp3.1\Razor\Views\Predmet\Edit.cshtml.g.cs
 C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\obj\Debug\netcoreapp3.1\Razor\Views\Predmet\Index.cshtml.g.cs
 C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
@@ -299,6 +300,7 @@ C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\Students
 C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\obj\Debug\netcoreapp3.1\Razor\Views\Student\Edit.cshtml.g.cs
 C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\obj\Debug\netcoreapp3.1\Razor\Views\Student\EditUspjeh.cshtml.g.cs
 C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\obj\Debug\netcoreapp3.1\Razor\Views\Student\Index.cshtml.g.cs
+C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\obj\Debug\netcoreapp3.1\Razor\Views\Student\Poruka.cshtml.g.cs
 C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\obj\Debug\netcoreapp3.1\Razor\Views\Student\Uspjeh.cshtml.g.cs
 C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\obj\Debug\netcoreapp3.1\Razor\Views\Uspjeh\Index.cshtml.g.cs
 C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
@@ -312,7 +314,6 @@ C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\Students
 C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\obj\Debug\netcoreapp3.1\StudentskaSluzba.dll
 C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\obj\Debug\netcoreapp3.1\StudentskaSluzba.pdb
 C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\obj\Debug\netcoreapp3.1\StudentskaSluzba.genruntimeconfig.cache
-C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\obj\Debug\netcoreapp3.1\StudentskaSluzba.csproj.CoreCompileInputs.cache
-C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\obj\Debug\netcoreapp3.1\StudentskaSluzba.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\obj\Debug\netcoreapp3.1\Razor\Views\Student\UspjesanAdd.cshtml.g.cs
-C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\obj\Debug\netcoreapp3.1\Razor\Views\Autentifikacija\Login.cshtml.g.cs
+C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\obj\Debug\netcoreapp3.1\StudentskaSluzba.csprojAssemblyReference.cache
+C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\obj\Debug\netcoreapp3.1\Razor\Views\Predmet\AddEditPredmet.cshtml.g.cs
+C:\Users\Atif\Desktop\GIT\ASP.NET-MVC-StudentskaSluzba\StudentskaSluzba\StudentskaSluzba\obj\Debug\netcoreapp3.1\Razor\Views\Predmet\Poruka.cshtml.g.cs

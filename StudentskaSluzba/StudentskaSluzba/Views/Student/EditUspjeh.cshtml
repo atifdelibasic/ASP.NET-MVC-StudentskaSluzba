@@ -1,18 +1,25 @@
 ﻿@model StudentskaSluzba.Models.StudentiPredmeti
 @{
-    ViewData["Title"] = "AddUspjeh";
     var predmeti = (List<Predmet>)ViewData["predmeti"];
     int[] ocjene = { 6, 7, 8, 9, 10 };
 }
 
 <div class="container">
+    <div asp-validation-summary="ModelOnly"></div>
     <form method="post" asp-action="EditUspjeh">
-        <div asp-validation-summary="ModelOnly"></div>
-        <input asp-for="StudentId" value="@Model.StudentId" hidden />
+        <input asp-for="StudentId" hidden />
+
         <div class="form-group">
             <label asp-for="Predmet"></label>
             <select name="PredmetId" class="form-control">
-                <option value="@Model.PredmetId" selected hidden>@Model.Predmet.Naziv</option>
+                @if (@Model.PredmetId == null)
+                {
+                    <option selected hidden disabled>Odaberite predmet</option>
+                }
+                else
+                {
+                    <option value="@Model.PredmetId" selected hidden>@Model.Predmet.Naziv</option>
+                }
                 @{
                     foreach (var predmet in predmeti)
                     {
@@ -24,15 +31,23 @@
             </select>
         </div>
 
-        <div>
+        <div class="form-group">
             <label>Datum polaganja</label>
-            @Html.EditorFor(model => model.DatumPolaganja, new { htmlAttributes = new { @class = "form-control" } })
+            <input asp-for="DatumPolaganja" type="date" class="form-control" />
+            <span asp-validation-for="DatumPolaganja" class="text-danger"></span>
         </div>
 
         <div class="form-group">
             <label>Ocjene</label>
             <select class="form-control" name="Ocjena">
-                <option value="@Model.Ocjena" selected hidden>@Model.Ocjena</option>
+                @if (@Model.Ocjena == null)
+                {
+                    <option selected hidden disabled>Odaberite ocjenu</option>
+                }
+                else
+                {
+                    <option value="@Model.Ocjena" selected hidden>@Model.Ocjena</option>
+                }
                 @{
                     foreach (var ocjena in ocjene)
                     {
@@ -45,7 +60,7 @@
         </div>
 
         <input type="submit" class="btn btn-success" value="Spasi promjene" />
-        <a asp-controller="Student" asp-route-id="@Model.StudentId" asp-action="Uspjeh" class="btn btn-success">Nazad</a>
+        <a asp-route-id="@Model.StudentId" asp-action="Uspjeh" class="btn btn-success">Nazad</a>
 
     </form>
 </div>

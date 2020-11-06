@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -19,6 +19,13 @@
     <Compile Remove="Migrations\20201027125924_korisnickiNalog.Designer.cs" />
     <Compile Remove="Migrations\20201027130300_korisnickiNalogEdit.cs" />
     <Compile Remove="Migrations\20201027130300_korisnickiNalogEdit.Designer.cs" />
+    <Compile Remove="Migrations\20201031122909_testiranje1.cs" />
+    <Compile Remove="Migrations\20201031122909_testiranje1.Designer.cs" />
+    <Compile Remove="Migrations\20201031123404_testiranje2.cs" />
+    <Compile Remove="Migrations\20201031130617_korisnickiNalog12.cs" />
+    <Compile Remove="Migrations\20201031130617_korisnickiNalog12.Designer.cs" />
+    <Compile Remove="Migrations\20201031131055_n.cs" />
+    <Compile Remove="Migrations\20201031131055_n.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

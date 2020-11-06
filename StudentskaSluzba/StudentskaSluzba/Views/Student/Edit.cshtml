@@ -4,6 +4,7 @@
     ViewData["Title"] = "Add";
     List<Grad> gradovi = (List<Grad>)ViewData["gradkey"];
     List<GodinaStudija> godineStudija = (List<GodinaStudija>)ViewData["godinekey"];
+    var s = (Student)ViewData["student"];
 }
 
 <div>
@@ -11,51 +12,71 @@
         <h4 class="bg-success text-white p-3">Dodaj studenta</h4>
         <div asp-validation-summary="ModelOnly"></div>
         <form class="p-2" method="post" asp-action="Edit">
+            <input asp-for="@s.Id" value="@s.Id" hidden />
             <div class="form-group">
                 <label>Ime</label>
-                <input asp-for="Ime" type="text" class="form-control" placeholder="Ime">
-                <span asp-validation-for="Ime" class="text-danger"></span>
+                <input asp-for="@s.Ime" type="text" class="form-control" placeholder="Ime">
+                <span asp-validation-for="@s.Ime" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label for="">Prezime</label>
-                <input asp-for="Prezime" type="text" class="form-control" id="" placeholder="Prezime">
+                <input asp-for="@s.Prezime" type="text" class="form-control" id="" placeholder="Prezime">
+                <span asp-validation-for="@s.Prezime" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label>Datum rođenja</label>
-                @Html.EditorFor(model => model.DatumRodjenja, new { htmlAttributes = new { @class = "form-control" } })
+                <input asp-for="@s.DatumRodjenja" type="date" class="form-control" />
+                <span asp-validation-for="@s.DatumRodjenja" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label for="">Adresa</label>
-                <input asp-for="AdresaStanovanja" type="text" class="form-control" id="" placeholder="Adresa">
+                <input asp-for="@s.AdresaStanovanja" type="text" class="form-control" placeholder="Adresa">
+                <span asp-validation-for="@s.AdresaStanovanja" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label for="">JMBG</label>
-                <input asp-for="JMBG" type="text" class="form-control" id="" placeholder="JMBG">
+                <input asp-for="@s.JMBG" type="text" class="form-control" placeholder="JMBG">
+                <span asp-validation-for="@s.JMBG" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label for="exampleInputEmail1">Email</label>
-                <input asp-for="Email" type="email" class="form-control" id="exampleInputEmail1" placeholder="Unesite email">
+                <input asp-for="@s.Email" type="email" class="form-control" placeholder="Unesite email">
+                <span asp-validation-for="@s.Email" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label asp-for="Grad"></label>
-                <select asp-for="GradId" asp-items="@(new SelectList(gradovi,"Id","Naziv"))" class="form-control">
-                    <option selected hidden value="@Model.GradId">@Model.Grad.Naziv</option>
+                <select asp-for="@s.GradId" asp-items="@(new SelectList(gradovi,"Id","Naziv"))" class="form-control">
+                    @if (@s.GradId == null)
+                    {
+                        <option selected hidden disabled>Odaberite opcinu</option>
+                    }
+                    else
+                    {
+                        <option selected hidden value="@s.GradId">@s.Grad.Naziv</option>
+                    }
                 </select>
-                <span asp-validation-for="GradId" class="text-danger"></span>
+                <span asp-validation-for="@s.GradId" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label>Godina studija</label>
-                <select asp-for="GodinaStudijaId" asp-items="@(new SelectList(godineStudija,"Id","Godina"))" class="form-control">
-                    <option selected hidden value="@Model.GodinaStudijaId">@Model.GodinaStudija.Godina</option>
+                <select asp-for="@s.GodinaStudijaId" asp-items="@(new SelectList(godineStudija,"Id","Godina"))" class="form-control">
+                    @if (@s.GodinaStudijaId == null)
+                    {
+                        <option selected hidden disabled>Odaberite godinu studija</option>
+                    }
+                    else
+                    {
+                        <option selected hidden value="@s.GodinaStudijaId">@s.GodinaStudija.Godina</option>
+                    }
                 </select>
-                <span asp-validation-for="GodinaStudijaId" class="text-danger"></span>
+                <span asp-validation-for="@s.GodinaStudijaId" class="text-danger"></span>
             </div>
 
             <input type="submit" class="btn btn-success" value="Spasi promjene" />
@@ -63,11 +84,3 @@
         </form>
     </div>
 </div>
-
-@section scripts {
-    <script>
-                    //$(document).ready(function () {
-                    //    $("#").datepicker();
-                    //});
-    </script>
-}

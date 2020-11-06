@@ -1,9 +1,5 @@
 ﻿@model StudentskaSluzba.Models.Student
 
-@{
-    ViewData["Title"] = "Uspjeh";
-}
-
 <div>
     <div class="container">
         <h4>Uspjeh - položeni predmeti</h4>
@@ -13,8 +9,8 @@
         </div>
 
         <div class="my-2">
-            <a class="btn btn-success text-white" asp-controller="Student" asp-route-id="@Model.Id" asp-action="AddUspjeh">Dodaj položeni predmet</a>
-            <a class="btn btn-secondary text-white" asp-controller="Student" asp-action="Index">Nazad</a>
+            <a class="btn btn-success text-white" asp-route-id="@Model.Id" asp-action="AddUspjeh">Dodaj položeni predmet</a>
+            <a class="btn btn-secondary text-white" asp-action="Index">Nazad</a>
         </div>
 
         <table class="table table-bordered">

@@ -4,10 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using StudentskaSluzba.Data;
+using StudentskaSluzba.Helper;
 using StudentskaSluzba.Models;
 
 namespace StudentskaSluzba.Controllers
 {
+    [Autorizacija(referent:true, student:false)]
     public class PredmetController : Controller
     {
         private readonly ApplicationDbContext _db;
@@ -32,22 +34,42 @@ namespace StudentskaSluzba.Controllers
             return View();
         }
 
-        public IActionResult AddPredmet()
+        public IActionResult AddEditPredmet(int id)
         {
-            return View();
+            var predmet = id == 0 ? new Predmet() : _db.Predmet.Find(id);
+
+            return View(predmet);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult AddPredmet(Predmet predmet)
+        public IActionResult AddEditPredmet(Predmet predmet)
         {
-            if (ModelState.IsValid)
+            Predmet p;
+            if (predmet.Id == 0)
             {
-                _db.Predmet.Add(predmet);
-                _db.SaveChanges();
+                p = new Predmet();
+                _db.Predmet.Add(p);
+                TempData["poruka_p"] = "Uspjesno dodan predmet: ";
+            }
+            else
+            {
+                p = _db.Predmet.Find(predmet.Id);
+                TempData["poruka_p"] = "Uspjesno uređen predmet: ";
             }
 
-            return RedirectToAction("AddPredmet");
+            p.ETCS = predmet.ETCS;
+            p.Naziv = predmet.Naziv;
+
+            if (!ModelState.IsValid)
+            {
+                return View(p);
+            }
+
+            _db.SaveChanges();
+            TempData["poruka_p"] += p.Naziv;
+
+            return View("Poruka");
         }
 
         public IActionResult Delete(int? id)
@@ -59,31 +81,6 @@ namespace StudentskaSluzba.Controllers
                 _db.SaveChanges();
             }
 
-            return RedirectToAction("Index");
-        }
-
-        public IActionResult Edit(int? id)
-        {
-            if (id != null || id != 0)
-            {
-                var predmet = _db.Predmet.Find(id);
-                return View(predmet);
-            }
-            return RedirectToAction("Index");
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Edit(Predmet predmet)
-        {
-            if (ModelState.IsValid)
-            {
-                if (predmet != null)
-                {
-                    _db.Update(predmet);
-                    _db.SaveChanges();
-                }
-            }
             return RedirectToAction("Index");
         }
     }

@@ -23,5 +23,6 @@ namespace StudentskaSluzba.Data
         public DbSet<Predmet> Predmet { get; set; }
         public DbSet<StudentiPredmeti> Uspjeh { get; set; }
         public DbSet<KorisnickiNalog> KorisnickiNalog { get; set; }
+        public DbSet<Test> Test { get; set; }
     }
 }
