@@ -18,7 +18,7 @@ namespace StudentskaSluzba.Models
         public int? PredmetId { get; set; }
         [ForeignKey("PredmetId")]
         public virtual Predmet Predmet { get; set; }
-        public int? Ocjena { get; set; }
+        public int Ocjena { get; set; }
         [Required]
         public DateTime? DatumPolaganja { get; set; }
     }

@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using StudentskaSluzba.Data;
 using StudentskaSluzba.Helper;
 using StudentskaSluzba.Models;
+using StudentskaSluzba.ViewModels;
 
 namespace StudentskaSluzba.Controllers
 {
@@ -32,19 +34,26 @@ namespace StudentskaSluzba.Controllers
                 return RedirectToAction("Login", "Autentifikacija");
             }
 
-            List<Student> list = new List<Student>();
-            if (!string.IsNullOrEmpty(pretraga))
-            {
-                list = _db.Student.Where(s => (s.Ime.ToLower() + " " + s.Prezime.ToLower()).StartsWith(pretraga.ToLower()))
-                    .Include(s => s.GodinaStudija).Include(s => s.Grad).ToList();
-            }
-            else
-            {
-                list = _db.Student.Include(s => s.GodinaStudija).Include(s => s.Grad).ToList();
-            }
-            ViewData["pretragakey"] = pretraga;
+            List<StudentiPrikazVM.Row> list =
+                _db.Student.Where(s => pretraga == null || (s.Ime.ToLower() + " " + s.Prezime.ToLower()).StartsWith(pretraga.ToLower()))
+                .Select(x => new StudentiPrikazVM.Row
+                {
+                    Id = x.Id,
+                    Ime = x.Ime,
+                    Prezime = x.Prezime,
+                    GodinaStudija = x.GodinaStudija.Godina,
+                    Grad = x.Grad.Naziv,
+                    AdresaStanovanja = x.AdresaStanovanja,
+                    DatumRodjenja = x.DatumRodjenja,
+                    JMBG = x.JMBG,
+                    Email = x.Email,
+                }).ToList();
 
-            return View(list);
+            StudentiPrikazVM sp = new StudentiPrikazVM();
+            sp.Studenti = list;
+            sp.pretraga = pretraga;
+
+            return View(sp);
         }
 
         public IActionResult Add()
@@ -82,26 +91,70 @@ namespace StudentskaSluzba.Controllers
         }
 
         // ADD OR UPDATE
-        public IActionResult Edit(int id)
+        public IActionResult AddEdit(int id)
         {
+            List<SelectListItem> opstine = _db.Grad.Select(g => new SelectListItem
+            {
+                Text = g.Naziv,
+                Value = g.Id.ToString()
+            }).ToList();
 
-            IEnumerable<Grad> gradovi = _db.Grad.ToList();
-            IEnumerable<GodinaStudija> godine = _db.GodinaStudja.ToList();
+            List<SelectListItem> godine = _db.GodinaStudja.Select(god => new SelectListItem
+            {
+                Text = god.Godina.ToString(),
+                Value = god.Id.ToString()
+            }).ToList();
 
-            ViewData["gradkey"] = gradovi;
-            ViewData["godinekey"] = godine;
+            StudentVM student = id == 0 ? new StudentVM
+            {
+                Opcine = opstine,
+                GodineStudija = godine
+            } :
+            _db.Student
+                .Select(x => new StudentVM
+                {
+                    Id = x.Id,
+                    Ime = x.Ime,
+                    Prezime = x.Prezime,
+                    AdresaStanovanja = x.AdresaStanovanja,
+                    DatumRodjenja = x.DatumRodjenja,
+                    JMBG = x.JMBG,
+                    Email = x.Email,
+                    GodinaStudijaId = x.GodinaStudijaId,
+                    GradId = x.GradId,
+                    Opcine = opstine,
+                    GodineStudija = godine
+                })
+                .Where(x => x.Id == id).Single();
 
-            Student student = id == 0 ? new Student() : _db.Student.Find(id);
-            ViewData["student"] = student;
-
-            return View("Edit");
+            return View("AddEdit", student);
         }
 
         // ADD OR UPDATE
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Student s)
+        public IActionResult AddEdit(StudentVM s)
         {
+            if (!ModelState.IsValid)
+            {
+                List<SelectListItem> opstine = _db.Grad.Select(g => new SelectListItem
+                {
+                    Text = g.Naziv,
+                    Value = g.Id.ToString()
+                }).ToList();
+
+                List<SelectListItem> godine = _db.GodinaStudja.Select(god => new SelectListItem
+                {
+                    Text = god.Godina.ToString(),
+                    Value = god.Id.ToString()
+                }).ToList();
+
+                s.Opcine = opstine;
+                s.GodineStudija = godine;
+
+                return View("AddEdit", s);
+            }
+
             Student student;
             if (s.Id == 0)
             {
@@ -124,17 +177,6 @@ namespace StudentskaSluzba.Controllers
             student.DatumRodjenja = s.DatumRodjenja;
             student.Email = s.Email;
 
-            if (!ModelState.IsValid)
-            {
-                ViewData["student"] = student;
-                IEnumerable<Grad> gradovi = _db.Grad.ToList();
-                IEnumerable<GodinaStudija> godine = _db.GodinaStudja.ToList();
-
-                ViewData["gradkey"] = gradovi;
-                ViewData["godinekey"] = godine;
-                return View("Edit");
-            }
-
             _db.SaveChanges();
 
             TempData["poruka"] += student.ToString();
@@ -151,8 +193,6 @@ namespace StudentskaSluzba.Controllers
             return View(student);
         }
 
-
-
         public IActionResult DeleteUspjeh(int? id)
         {
             if (id != null || id != 0)
@@ -162,17 +202,25 @@ namespace StudentskaSluzba.Controllers
                 _db.SaveChanges();
                 return RedirectToAction("Uspjeh", new { id = obj.StudentId });
             }
-
             return RedirectToAction("Index");
         }
+
         public IActionResult AddUspjeh(int id)
         {
             if (id != 0)
             {
-                List<Predmet> predmeti = _db.Predmet.ToList();
-                ViewData["predmeti"] = predmeti;
-
-                StudentiPredmeti uspjeh = new StudentiPredmeti() { StudentId = id };
+                List<SelectListItem> predmeti = _db.Predmet
+                    .Select(x => new SelectListItem
+                    {
+                        Value = x.Id.ToString(),
+                        Text = x.Naziv
+                    }).ToList();
+                StudentUspjehVM uspjeh = new StudentUspjehVM
+                {
+                    DatumPolaganja = DateTime.Now,
+                    StudentId = id,
+                    Predmeti = predmeti
+                };
                 return View("EditUspjeh", uspjeh);
             }
 
@@ -181,18 +229,47 @@ namespace StudentskaSluzba.Controllers
 
         public IActionResult EditUspjeh(int id)
         {
-            StudentiPredmeti uspjeh = _db.Uspjeh.Include(p => p.Predmet).SingleOrDefault(sp => sp.Id == id);
+            List<SelectListItem> predmeti = _db.Predmet
+                .Select(x => new SelectListItem
+                {
+                    Value = x.Id.ToString(),
+                    Text = x.Naziv
+                }).ToList();
 
-            ViewData["uspjeh"] = uspjeh;
-            ViewData["predmeti"] = _db.Predmet.ToList();
+            StudentUspjehVM u = _db.Uspjeh
+                .Select(x => new StudentUspjehVM
+                {
+                    Id = x.Id,
+                    PredmetId = x.PredmetId,
+                    StudentId = x.StudentId,
+                    DatumPolaganja = x.DatumPolaganja,
+                    Ocjena = x.Ocjena,
+                    Predmeti = predmeti
+                })
+                .Where(x => x.Id == id)
+                .Single();
 
-            return View(uspjeh);
+            return View(u);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult EditUspjeh(StudentiPredmeti sp)
+        public IActionResult EditUspjeh(StudentUspjehVM sp)
         {
+            if (!ModelState.IsValid)
+            {
+                List<SelectListItem> predmeti = _db.Predmet
+                    .Select(x => new SelectListItem
+                    {
+                        Value = x.Id.ToString(),
+                        Text = x.Naziv
+                    }).ToList();
+
+                sp.Predmeti = predmeti;
+
+                return View(sp);
+            }
+
             StudentiPredmeti uspjeh;
             if (sp.Id == 0)
             {
@@ -208,14 +285,6 @@ namespace StudentskaSluzba.Controllers
             uspjeh.PredmetId = sp.PredmetId;
             uspjeh.StudentId = sp.StudentId;
             uspjeh.DatumPolaganja = sp.DatumPolaganja;
-
-            if (!ModelState.IsValid)
-            {
-                List<Predmet> predmeti = _db.Predmet.ToList();
-                ViewData["predmeti"] = predmeti;
-                ViewData["uspjeh"] = uspjeh;
-                return View("EditUspjeh");
-            }
 
             _db.SaveChanges();
             return RedirectToAction("Uspjeh", new { id = uspjeh.StudentId });

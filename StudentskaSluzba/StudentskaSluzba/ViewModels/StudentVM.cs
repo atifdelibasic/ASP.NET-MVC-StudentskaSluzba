@@ -1,4 +1,5 @@
-﻿using StudentskaSluzba.Models;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using StudentskaSluzba.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -10,29 +11,19 @@ namespace StudentskaSluzba.ViewModels
 {
     public class StudentVM
     {
-        [Key]
         public int Id { get; set; }
-        [Required(ErrorMessage = "Ime je obavezno")]
+        [Required]
         public string Ime { get; set; }
-        [Required]
         public string Prezime { get; set; }
-        [Required(ErrorMessage = "Unesite datum rođenja")]
         public DateTime? DatumRodjenja { get; set; }
-        [Required]
         public string AdresaStanovanja { get; set; }
-        [Required]
         public string JMBG { get; set; }
-        [Required]
         public string Email { get; set; }
-        [Required(ErrorMessage = "Obavezno polje")]
-        [ForeignKey("GodinaStudija")]
-        public int GodinaStudijaId { get; set; }
-        [Display(Name = "Godina studija")]
-        public virtual GodinaStudija GodinaStudija { get; set; }
-        [Required(ErrorMessage = "Obavezno polje")]
-        public int GradId { get; set; }
-        [ForeignKey("GradId")]
-        public virtual Grad Grad { get; set; }
-
+        [Required]
+        public int? GodinaStudijaId { get; set; }
+        [Required]
+        public int? GradId { get; set; }
+        public List<SelectListItem> Opcine { get; set; }
+        public List<SelectListItem> GodineStudija { get; set; }
     }
 }

@@ -1,62 +1,45 @@
-﻿@model StudentskaSluzba.Models.StudentiPredmeti
-@{
-    var predmeti = (List<Predmet>)ViewData["predmeti"];
-    int[] ocjene = { 6, 7, 8, 9, 10 };
-}
+﻿@model StudentskaSluzba.ViewModels.StudentUspjehVM
+
 
 <div class="container">
-    <div asp-validation-summary="ModelOnly"></div>
     <form method="post" asp-action="EditUspjeh">
+    <div asp-validation-summary="ModelOnly"></div>
         <input asp-for="StudentId" hidden />
 
         <div class="form-group">
-            <label asp-for="Predmet"></label>
-            <select name="PredmetId" class="form-control">
-                @if (@Model.PredmetId == null)
-                {
-                    <option selected hidden disabled>Odaberite predmet</option>
-                }
-                else
-                {
-                    <option value="@Model.PredmetId" selected hidden>@Model.Predmet.Naziv</option>
-                }
-                @{
-                    foreach (var predmet in predmeti)
-                    {
-                        <option value="@predmet.Id">
-                            @predmet.Naziv
-                        </option>
-                    }
-                }
+            <label asp-for="PredmetId"></label>
+            <select asp-for="PredmetId" asp-items="Model.Predmeti" class="form-control">
             </select>
+            <span asp-validation-for="PredmetId" class="text-danger"></span>
         </div>
 
         <div class="form-group">
-            <label>Datum polaganja</label>
+            <label asp-for="DatumPolaganja"></label>
             <input asp-for="DatumPolaganja" type="date" class="form-control" />
             <span asp-validation-for="DatumPolaganja" class="text-danger"></span>
         </div>
 
         <div class="form-group">
-            <label>Ocjene</label>
-            <select class="form-control" name="Ocjena">
-                @if (@Model.Ocjena == null)
-                {
-                    <option selected hidden disabled>Odaberite ocjenu</option>
-                }
-                else
-                {
-                    <option value="@Model.Ocjena" selected hidden>@Model.Ocjena</option>
-                }
+            <select name="Ocjena" class="form-control">
                 @{
-                    foreach (var ocjena in ocjene)
+                    if (Model.Ocjena == 0)
                     {
-                        <option value="@ocjena" asp-for="Ocjena">
-                            @ocjena
-                        </option>
+                        <option selected disabled hidden>Unesite ocjenu: </option>
+                    }
+                    foreach (var item in Model.Ocjene)
+                    {
+                        if (item == Model.Ocjena)
+                        {
+                            <option value="@item" selected>@item</option>
+                        }
+                        else
+                        {
+                            <option value="@item">@item</option>
+                        }
                     }
                 }
             </select>
+            <span asp-validation-for="Ocjena" class="text-danger"></span>
         </div>
 
         <input type="submit" class="btn btn-success" value="Spasi promjene" />
